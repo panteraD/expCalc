@@ -31,7 +31,11 @@ public class Main {
                 long delta = Long.parseLong(strings[0]);
 
                 if (strings.length > 1) {
-                    transactions.add(new Transaction(delta, strings[1]));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int i = 1; i < strings.length; i++) {
+                        stringBuilder.append(strings[i]);
+                    }
+                    transactions.add(new Transaction(delta, stringBuilder.toString()));
                 } else {
                     transactions.add(new Transaction(delta, null));
                 }
@@ -42,6 +46,7 @@ public class Main {
                         Printer.printBalance(transactions);
                         break;
                     case "exit":
+                        source.close();
                         System.exit(0);
                         break;
                     case "revenues":
@@ -60,12 +65,7 @@ public class Main {
                         System.out.println(Printer.HELP);
                         break;
                 }
-
-
             }
         }
-
-
     }
-
 }
