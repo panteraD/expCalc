@@ -1,10 +1,11 @@
-import java.util.LinkedList;
+import java.util.List;
 
 
 public class Printer {
 
     public static final String HELP = "Available commands: balance, exit, revenues, expenses, save, load";
-    public static void printBalance(LinkedList<Transaction> transactions) {
+
+    public static void printBalance(List<Transaction> transactions) {
         long balance = 0;
         for (Transaction transaction : transactions) {
             balance += transaction.getValue();
@@ -12,7 +13,7 @@ public class Printer {
         System.out.println(balance);
     }
 
-    public static void printRevenues(LinkedList<Transaction> transactions) {
+    public static void printRevenues(List<Transaction> transactions) {
         if (transactions != null) {
             System.out.println("revenues:");
             for (Transaction t : transactions) {
@@ -23,7 +24,7 @@ public class Printer {
         }
     }
 
-    public static void printExpenes(LinkedList<Transaction> transactions) {
+    public static void printExpenes(List<Transaction> transactions) {
         if (transactions != null) {
             System.out.println("expenses:");
             for (Transaction t : transactions) {

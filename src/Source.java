@@ -1,9 +1,12 @@
-import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by chern on 21.10.2015.
  */
-public abstract class Source {
-    public abstract void saveToFile(LinkedList<Transaction> transactions);
-    public abstract LinkedList<Transaction>  loadFromFile();
+public interface Source {
+    void save(List<Transaction> transactions);
+
+    List<Transaction> load();
+
+    void close();
 }

@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Простой консольный трекер бюджета<br/>
@@ -12,10 +13,13 @@ import java.util.LinkedList;
  * P.S Можете добавить на свое усмотрение фичи (например какой-нить алерт при отрицательном балансе)<br/>
  */
 public class Main {
+
+
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        LinkedList<Transaction> transactions = new LinkedList<>();
-        Source source = new XMLSource();
+        List<Transaction> transactions = new LinkedList<>();
+        // Source source = new XMLSource();
+        Source source = new SQLSource();
 
         while (true) {
             String inputString = "";
@@ -47,10 +51,10 @@ public class Main {
                         Printer.printExpenes(transactions);
                         break;
                     case "save":
-                        source.saveToFile(transactions);
+                        source.save(transactions);
                         break;
                     case "load":
-                        transactions = source.loadFromFile();
+                        transactions = source.load();
                         break;
                     default:
                         System.out.println(Printer.HELP);
@@ -60,6 +64,7 @@ public class Main {
 
             }
         }
+
 
     }
 
